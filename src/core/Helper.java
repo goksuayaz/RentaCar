@@ -6,6 +6,7 @@ import java.awt.*;
 public class Helper {
 
     public static void setTheme(){
+        optionPaneTR();
         for(UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
             if("Nimbus".equals(info.getName())){
                 try{
@@ -20,8 +21,6 @@ public class Helper {
     }
 
     public static void showMsg(String str){
-        optionPaneTR();
-
         String msg;
         String title;
 

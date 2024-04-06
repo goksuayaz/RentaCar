@@ -15,10 +15,11 @@ public class BookDao {
         this.carDao = new CarDao();
     }
 
-    public ArrayList<Book> findAll(){
-        return this.selectByQuery("SELECT * FROM public.book ORDER BY book_id ASC");
-    }
+    public ArrayList<Book> findAll() {
+        String sql = "SELECT * FROM public.book ORDER BY book_id ASC";
+        return this.selectByQuery(sql);
 
+    }
 
 
     public Book getById(int id){

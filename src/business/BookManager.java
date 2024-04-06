@@ -3,6 +3,8 @@ package business;
 import core.Helper;
 import dao.BookDao;
 import entity.Book;
+import entity.Car;
+import entity.Model;
 
 import java.util.ArrayList;
 
@@ -51,8 +53,8 @@ public class BookManager {
             rowObject[i++] = obj.getMpno();
             rowObject[i++] = obj.getMail();
             rowObject[i++] = obj.getIdno();
-            rowObject[i++] = obj.getStrt_date().toString();
-            rowObject[i++] = obj.getFnsh_date().toString();
+            rowObject[i++] = obj.getStrt_date();
+            rowObject[i++] = obj.getFnsh_date();
             rowObject[i++] = obj.getPrc();
             bookList.add(rowObject);
 

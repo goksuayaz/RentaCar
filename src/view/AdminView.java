@@ -90,16 +90,13 @@ public class AdminView extends  Layout{
         this.add(container);
         this.guiInitilaze(1000,500);
         this.user = user;
+        this.carManager = new CarManager();
 
         if(this.user == null){
             dispose();
         }
 
-        
-
-        this.lbl_welcome.setText("Hoşgeldiniz : " + this.user.getUsername());
-
-        loadComponent();
+        this.lbl_welcome.setText("Hoşgeldiniz : " + this.user.getRole());
 
         loadBrandTable();
         loadBrandComponent();
@@ -115,7 +112,10 @@ public class AdminView extends  Layout{
         loadBookComponent();
         loadBookingFilter();
 
+
     }
+
+
 
     private void loadComponent(){
         this.btn_logout.addActionListener(new ActionListener() {
@@ -313,6 +313,14 @@ public class AdminView extends  Layout{
         loadModelFilterBrand();
     }
 
+    public void loadBookFilterPlate() {
+        this.cmb_plate_filter.removeAllItems();
+        for (Brand obj : brandManager.findAll()) {
+            this.cmb_plate_filter.addItem(new ComboItem(obj.getId(), obj.getName()));
+        }
+        this.cmb_plate_filter.setSelectedItem(null);
+    }
+
     public void loadModelFilterBrand(){
         this.cmb_s_model_brand.removeAllItems();
         for(Brand obj : brandManager.findAll()){
@@ -333,6 +341,7 @@ public class AdminView extends  Layout{
                     loadBrandTable();
                     loadModelTable(null);
                     loadModelFilterBrand();
+                    loadCarTable();
 
                 }
             });
@@ -348,7 +357,6 @@ public class AdminView extends  Layout{
                     loadModelTable(null);
                     loadModelFilterBrand();
                     loadCarTable();
-                    loadBookTable(null);
                 }
             });
         });
@@ -370,7 +378,7 @@ public class AdminView extends  Layout{
 
         });
 
-        this.tbl_brand.setComponentPopupMenu(brand_Menu);
+        this.tbl_brand.setComponentPopupMenu(this.brand_Menu);
 
 
     }

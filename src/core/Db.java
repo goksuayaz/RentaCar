@@ -29,6 +29,8 @@ public class Db {
         try{
         if(instance == null || instance.getConnection().isClosed()) {
             instance = new Db();
+            return instance.getConnection();
+
         }
 
     }catch(SQLException e){

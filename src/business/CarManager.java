@@ -52,7 +52,7 @@ public class CarManager {
     }
     public boolean save(Car car){
         if(this.getById(car.getId()) != null){
-            Helper.showMsg("error");
+            Helper.showMsg("error" + car.getId());
             return false;
         }
         return this.carDao.save(car);
